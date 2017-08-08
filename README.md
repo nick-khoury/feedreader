@@ -2,7 +2,7 @@
 
 ## To run the application
 
-TODO
+download the repository, extract it, and use a web browser to open **index.html**
 
 ## Why this Project?
 
