@@ -76,6 +76,7 @@ $(function() {
           * clicked and does it hide when clicked again.
           */
 		it('changes visibility when icon clicked', function() {
+			expect(body.className).toContain("menu-hidden");
 			menu.click();
 			expect(body.className).not.toContain("menu-hidden");
 			menu.click();
@@ -96,7 +97,7 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
-       it('at least one element', function(done) {
+       it('has at least one element', function(done) {
 			var feed = document.getElementsByClassName("feed")[0];
 			var entry = document.getElementsByClassName("entry");
 			expect(entry.length).toBeGreaterThan(0);
@@ -115,16 +116,14 @@ $(function() {
 				});
 			});
 		});
-        
         /* a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
         it('content changes upon load', function(done) {
-			var nex = document.querySelector(".feed").innerHTML;
+			var nex = document.getElementsByClassName("feed")[0].innerHTML;
 			expect(old).not.toBe(nex);
 			done();
 		});
     });
-    
 }());
