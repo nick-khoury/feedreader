@@ -67,7 +67,7 @@ $(function() {
 		var menu = document.getElementsByClassName("menu-icon-link")[0];
 			
         it('is hidden by default', function() {
-			expect(body.className).toContain("menu-hidden");
+			expect(body.classList.contains("menu-hidden")).toBe(true);
 		});
 
          /* a test that ensures the menu changes
@@ -76,11 +76,11 @@ $(function() {
           * clicked and does it hide when clicked again.
           */
 		it('changes visibility when icon clicked', function() {
-			expect(body.className).toContain("menu-hidden");
+			expect(body.classList.contains("menu-hidden")).toBe(true);
 			menu.click();
-			expect(body.className).not.toContain("menu-hidden");
+			expect(body.classList.contains("menu-hidden")).toBe(false);
 			menu.click();
-			expect(body.className).toContain("menu-hidden");
+			expect(body.classList.contains("menu-hidden")).toBe(true);
 		});
     });
     
@@ -97,11 +97,10 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
-       it('has at least one element', function(done) {
+       it('has at least one element', function() {
 			var feed = document.getElementsByClassName("feed")[0];
-			var entry = document.getElementsByClassName("entry");
+			var entry = feed.getElementsByClassName("entry");
 			expect(entry.length).toBeGreaterThan(0);
-			done();
 		});
     });
     
@@ -120,10 +119,9 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-        it('content changes upon load', function(done) {
+        it('content changes upon load', function() {
 			var nex = document.getElementsByClassName("feed")[0].innerHTML;
 			expect(old).not.toBe(nex);
-			done();
 		});
     });
 }());
